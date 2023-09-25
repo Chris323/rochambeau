@@ -74,8 +74,8 @@ function game(){
         if(decision === false){
             compScore++;
         }
-        console.log("Player" + playerScore);
-        console.log("Comp" + compScore);
+        console.log("Player " + playerScore);
+        console.log("Comp " + compScore);
     }
     if(playerScore > compScore){
         return "You win, with a score of " + playerScore + " to " + compScore;
