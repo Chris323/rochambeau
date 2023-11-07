@@ -12,8 +12,6 @@ function getComputerChoice() {
     case 2:
       return "Scissors";
   }
-  //console.log(compChoice);
-  //return compChoice;
 }
 
 function playRound(pSelection, cSelection) {
@@ -55,44 +53,19 @@ function playRound(pSelection, cSelection) {
   }
 }
 
+const choice = document.querySelectorAll("button");
 
-const choice = document.querySelectorAll('button');
+const results = document.querySelector(".result");
+const para = document.createElement("p");
+para.textContent = 'This is the glorious text-content!';
+results.appendChild(para);
 
 choice.forEach((button) => {
-  button.addEventListener('click', () => {
-    //console.log("check2");
-    let decision = playRound(button.id, getComputerChoice());
-    //console.log("check1");
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+      alert(button.id);
+    });
   });
-});
 
-//TODO create a <p> in the div, display results of player selection
-
-
-function game() {
-  let playerScore = 0;
-  let compScore = 0;
-
-  //for(let i = 0; i < 5; i++){
-  let input = prompt("Please enter your choice:");
-  let decision = playRound(input, getComputerChoice());
-  //console.log(decision);
-  if (decision === true) {
-    playerScore++;
-  }
-  if (decision === false) {
-    compScore++;
-  }
-  console.log("Player " + playerScore);
-  console.log("Comp " + compScore);
-  //}
-  if (playerScore > compScore) {
-    return "You win, with a score of " + playerScore + " to " + compScore;
-  }
-  if (playerScore < compScore) {
-    return "You lose, with a score of " + playerScore + " to " + compScore;
-  }
-  if (playerScore === compScore) {
-    return "You tie, with a score of " + playerScore + " to " + compScore;
-  }
-}
+function game() {}
