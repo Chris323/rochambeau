@@ -57,15 +57,62 @@ const choice = document.querySelectorAll("button");
 
 const results = document.querySelector(".result");
 const para = document.createElement("p");
-para.textContent = 'This is the glorious text-content!';
-results.appendChild(para);
+
+let playerScore = 0;
+let compScore = 0;
 
 choice.forEach((button) => {
-
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-      alert(button.id);
-    });
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    const para = document.createElement("p");
+    let decision = playRound(button.id, getComputerChoice());
+    //true, player wins
+    if (playerScore < 5 && compScore < 5) {
+      if (decision === true) {
+        if (button.id === "rock") {
+          para.textContent = "You win, " + button.id + " beats scissors";
+        }
+        if (button.id === "paper") {
+          para.textContent = "You win, " + button.id + " beats rock";
+        }
+        if (button.id === "scissors") {
+          para.textContent = "You win, " + button.id + " beats paper";
+        }
+        results.appendChild(para);
+        playerScore++;
+//        console.log(playerScore);
+        //tie
+      } else if (decision === "You tie") {
+        para.textContent = "You tie";
+        results.appendChild(para);
+        //false, player loses
+      } else {
+        if (button.id === "rock") {
+          para.textContent = "You lose, " + button.id + " beats scissors";
+        }
+        if (button.id === "paper") {
+          para.textContent = "You lose, " + button.id + " beats rock";
+        }
+        if (button.id === "scissors") {
+          para.textContent = "You lose, " + button.id + " beats paper";
+        }
+        results.appendChild(para);
+        compScore++;
+//        console.log(compScore);
+      }
+    } else {
+      if (playerScore === 5) {
+        para.textContent = "You won " + playerScore + " to " + compScore;
+        results.appendChild(para);
+      }
+      if (compScore === 5) {
+        para.textContent = "You lost " + playerScore + " to " + compScore;
+        results.appendChild(para);
+      }
+    }
   });
+});
 
-function game() {}
+// function game() {
+//   alert("okay back here");
+// }
